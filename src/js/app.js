@@ -47,6 +47,15 @@ const storeContacts = (contactsArrey) => {
   localStorage.setItem("contacts", JSON.stringify(contactsArrey)); // Key er contacts, value er JSON og stringify er method gjør det om til string, contactsArrey er det som skal gjøres om til string. Calling function etter contact er pushet i arrey. Key skaper en ny arrey som erstatter den forrige.
 };
 
+// Function for deleting contacts from the list (22)
+const deleteContacts = (id) => {
+  // Legger id inn i parentes her, fordi det er den vi har brukt som argument i punkt 21, der vi la på event listener på knappen for å slette
+  const contacts = JSON.parse(localStorage.getItem("contacts")); // Alt man får fra local storage er JSON, så må konvertere til string.
+  const remainingContacts = contacts.filter((contact) => contact.id !== id); // Lager en ny arrey som lagrer alle kontaktene som IKKE er slettet, slik at vi aldri erstatter den originale. Bruker filter som metode fordi den itererer over arrey, og muterer ikke orginalen. Ønsker en arrey som ikke !== inneholder id som ble slettet i funksjoneen på linjen over, som heter deletecContacts. (23).
+  storeContacts(remainingContacts); // Må calle fumksjonen for å få den nye arreyen som ikke har elementet som ble slettet. Da er local storage oppdatert. (24).
+  renderContacts(remainingContacts); // Oppdatere DOM
+};
+
 // Render Contacts on Page Function (10)
 const renderContacts = (contactsArrey) => {
   // Må gi funksjonen tilgang til arrey med contacts. Legger som parameter.
@@ -92,6 +101,9 @@ const renderContacts = (contactsArrey) => {
     contactPhonenumber.classList.add("contacts-item__phone");
     contactAddress.classList.add("contacts-item__address");
     contactTools.classList.add("contacts-item__controls");
+
+    // Add Event Listeners to Delete and Edit Buttons (21)
+    deleteButton.addEventListener("click", () => deleteContacts(contact.id));
   });
 };
 
