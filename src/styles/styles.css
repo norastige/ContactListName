@@ -1,0 +1,91 @@
+@font-face {
+  font-family: Montserrat-Medium;
+  src: url(../assets/fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url(../assets/fonts/Montserrat-Regular.ttf);
+}
+
+/* Main Layout Styles */
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+.contact-app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  font-family: Montserrat-Regular;
+}
+
+.contact-app__display-contacts {
+  flex-basis: 75%; /*Flex-basis tildeler tilgjengelig plass*/
+  background-color: rgb(249, 182, 182);
+}
+
+/* Styles for form */
+.contact-app__form-container {
+  flex-basis: 25%;
+  background-color: rgb(148, 148, 255);
+  height: 100vh;
+}
+
+.contact-app__form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-form);
+}
+
+.form__logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 10%; /* Alternativ til padding */
+}
+
+.form__logo-container img {
+  width: 68px;
+  height: 68px;
+}
+
+.form__input-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+  padding: var(--spacing-medium);
+  flex-grow: 1; /* Tar tilgjengelig plass */
+}
+
+.form__input {
+  width: 100%;
+  height: 32px;
+  padding: 0 var(--spacing-small);
+  font-family: inherit;
+}
+
+.form__address-input {
+  font-family: inherit;
+  resize: none;
+  padding: var(--spacing-small);
+}
+
+.form__sumbmit-button {
+  font-family: inherit;
+  height: 32px;
+  cursor: pointer;
+  background-color: var(--color-add-button);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+}
+
+/* Hover */
+.form__sumbmit-button:hover {
+  opacity: 0.95;
+}
+
+/* Display Clients */
